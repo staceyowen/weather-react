@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 export default function Weather() {
   let [city, setCity] = useState("");
   let [information, setInformation] = useState(false);
   let [weather, setWeather] = useState("");
 
+
   function displayWeather(response) {
     setInformation(true);
     setWeather({
+      citydisplay: response.data.name,
       temperature: response.data.main.temp,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
@@ -31,8 +35,25 @@ export default function Weather() {
 
   let form = (
     <form onSubmit={handleSubmit}>
-      <input type="search" onChange={updateCity} />
-      <input type="submit" value="Search" />
+      <div class="row">
+        <div class="col-7">
+          <input type="search" 
+          autocomplete="off"
+          className="form-control" 
+          id="city-input" 
+          placeholder="Type a city" 
+          onChange={updateCity} 
+          />
+        </div>
+        <div class="col-3">
+          <input 
+            className="btn btn-primary w-100" 
+            type="submit" 
+            value="Search" />
+        </div>
+        
+      </div>
+
     </form>
   );
 
@@ -41,14 +62,17 @@ export default function Weather() {
       <div>
         {form}
         <h4>
-          <ul>
+        <ul className="main-weather">
+          <li><h1 id="city">{weather.citydisplay}</h1></li>
+          <li><h4>{weather.description}</h4></li>
+          <li>
+              <img src={weather.icon} alt="{weather.description}" className="float-left" />
+            </li>
+        </ul>
+          <ul className="main-description">
             <li>Temperature: {Math.round(weather.temperature)}°c</li>
-            <li>Description: {weather.description}</li>
             <li>Humidity: {weather.humidity}%</li>
             <li>Wind speed: {Math.round(weather.wind)} km/h</li>
-            <li>
-              <img src={weather.icon} alt="{weather.description}" />
-            </li>
           </ul>
         </h4>
       </div>

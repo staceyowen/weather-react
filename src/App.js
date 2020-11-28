@@ -2,15 +2,20 @@ import logo from './logo.svg';
 import './App.css';
 import "./styles.css";
 import Search from "./Search.js";
+import Footer from "./Footer"
 
 
 function App() {
   return (
     <div className="App">
-      <h1>Weather App</h1>
-     <Search />
-    
-    
+      <div class="container" id="container">
+        <div class="weather-app-wrapper">
+          <div class="weather-app">  
+            <Search />
+          </div>  
+        </div>
+          <Footer />
+      </div>
     </div>
   );
 }

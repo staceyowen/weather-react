@@ -1,10 +1,60 @@
+body {
+  background-color: #97e0e4;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.weather-app-wrapper {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.weather-app {
+  background: linear-gradient(135deg, #00c8ff41, hsla(305, 89%, 48%, 0.233));
+  border: 2px solid white;
+  border-image: repeating-linear-gradient(
+      40deg,
+      hsla(305, 89%, 48%, 0.233),
+      #00c8ff41,
+      hsla(305, 89%, 48%, 0.233) 20px
+    )
+    60;
+  border-radius: 7px;
+  padding: 20px;
+}
+
 .App {
   font-family: sans-serif;
   text-align: center;
 }
 
+h1 {
+  color: rgb(16, 74, 250);
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 28px;
+  margin-bottom: 0;
+  padding-top: 10px;
+  text-align: left;
+}
+
+h4 {
+  text-align: left;
+}
+
 ul {
   list-style: none;
+}
+
+.main-weather img {
+  display: block;
+  margin: 0 auto;
+  height: 56px;
+  width: 56px;
+}
+
+.main-description {
+  font-size: 13px;
+  text-align: right;
 }
 
 img {
