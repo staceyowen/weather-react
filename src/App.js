@@ -1,7 +1,8 @@
 import './App.css';
 import "./styles.css";
 import Search from "./Search.js";
-import Footer from "./Footer"
+import Footer from "./Footer";
+
 
 
 function App() {
