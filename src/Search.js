@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTint, faWind, faSmile, faTemperatureHigh, faTemperatureLow } from '@fortawesome/free-solid-svg-icons';
 
 export default function Weather() {
   let [city, setCity] = useState("");
@@ -14,10 +15,13 @@ export default function Weather() {
     setWeather({
       citydisplay: response.data.name,
       temperature: response.data.main.temp,
+      feelslike: response.data.main.feels_like,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-      description: response.data.weather[0].description
+      description: response.data.weather[0].description,
+      temphigh: response.data.main.temp_max,
+      templow: response.data.main.temp_min,
     });
   }
 
@@ -65,15 +69,33 @@ export default function Weather() {
         <ul className="main-weather">
           <li><h1 id="city">{weather.citydisplay}</h1></li>
           <li><h4>{weather.description}</h4></li>
-          <li>
+          
+        </ul>
+        <div className="main-description">
+          <div className="row">
+            <div className="col-5">
+              <ul>
+                <li>
               <img src={weather.icon} alt="{weather.description}" className="float-left" />
             </li>
-        </ul>
-          <ul className="main-description">
-            <li>Temperature: {Math.round(weather.temperature)}°c</li>
-            <li>Humidity: {weather.humidity}%</li>
-            <li>Wind speed: {Math.round(weather.wind)} km/h</li>
-          </ul>
+              </ul>
+            </div>
+            <div className="col-4">
+              <ul>
+                <li>Temperature: {Math.round(weather.temperature)}°c</li>
+                <li><FontAwesomeIcon icon={faSmile} /> Feels like: {Math.round(weather.feelslike)}°c</li>
+                <li><FontAwesomeIcon icon={faTint} /> Humidity: {weather.humidity}%</li>
+                <li><FontAwesomeIcon icon={faWind} /> Wind: {Math.round(weather.wind)} km/h</li>
+              </ul>
+            </div>
+            <div className="col-3">
+              <ul>
+                <li><FontAwesomeIcon icon={faTemperatureHigh} /> High: {Math.round(weather.temphigh)}°c</li>
+                <li><FontAwesomeIcon icon={faTemperatureLow} /> Low: {Math.round(weather.templow)}°c</li>
+              </ul>
+            </div>
+          </div>
+        </div>
         </h4>
       </div>
     );
