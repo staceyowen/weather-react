@@ -5,7 +5,7 @@ import Footer from "./Footer";
 
 
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <div class="container" id="container">
@@ -19,5 +19,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
