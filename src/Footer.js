@@ -5,8 +5,8 @@ export default function Footer() {
 <div class="footer">
       <small>
         <a href="https://github.com/staceyowen/weather-react" target="_blank" rel="noreferrer">
-          Open-source code by Stacey Owen
-        </a> 
+          Open-source code{" "}
+        </a>by Stacey Owen
       </small>
     </div>
     );

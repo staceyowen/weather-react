@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTint, faWind, faSmile, faTemperatureHigh, faTemperatureLow } from '@fortawesome/free-solid-svg-icons';
 
@@ -41,11 +40,12 @@ export default function Weather() {
     <form onSubmit={handleSubmit}>
       <div class="row">
         <div class="col-7">
-          <input type="search" 
+          <input 
+          type="search" 
+          placeholder="Type a city" 
           autocomplete="off"
           className="form-control" 
           id="city-input" 
-          placeholder="Type a city" 
           onChange={updateCity} 
           />
         </div>
@@ -54,6 +54,12 @@ export default function Weather() {
             className="btn btn-primary w-100" 
             type="submit" 
             value="Search" />
+        </div>
+        <div class="col-2">
+          <input 
+            className="btn btn-primary w-100" 
+            type="submit" 
+            value="📍" />
         </div>
         
       </div>
@@ -68,6 +74,7 @@ export default function Weather() {
         <h4>
         <ul className="main-weather">
           <li><h1 id="city">{weather.citydisplay}</h1></li>
+          <li>Saturday 07:00</li>
           <li><h4>{weather.description}</h4></li>
           
         </ul>
@@ -76,13 +83,17 @@ export default function Weather() {
             <div className="col-5">
               <ul>
                 <li>
-              <img src={weather.icon} alt="{weather.description}" className="float-left" />
-            </li>
+                  <img 
+                  src={weather.icon} 
+                  alt="{weather.description}" 
+                  className="float-left" 
+                  />
+                  {Math.round(weather.temperature)}°c
+                </li>
               </ul>
             </div>
             <div className="col-4">
               <ul>
-                <li>Temperature: {Math.round(weather.temperature)}°c</li>
                 <li><FontAwesomeIcon icon={faSmile} /> Feels like: {Math.round(weather.feelslike)}°c</li>
                 <li><FontAwesomeIcon icon={faTint} /> Humidity: {weather.humidity}%</li>
                 <li><FontAwesomeIcon icon={faWind} /> Wind: {Math.round(weather.wind)} km/h</li>

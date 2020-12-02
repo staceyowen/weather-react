@@ -1,6 +1,7 @@
 import './App.css';
 import "./styles.css";
-import Search from "./Search.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Search from "./Search";
 import Footer from "./Footer";
 
 
