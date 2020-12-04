@@ -92,7 +92,7 @@ export default function Weather() {
                       <span className="temperature">
                       {Math.round(weather.temperature)}
                       </span>
-                      <span className="unit">°c
+                      <span className="unit">° c
                       </span>
                     </div>
               </div>
@@ -116,6 +116,12 @@ export default function Weather() {
       </div>
     );
   } else {
+    let apiKey = "dfc2e82cce5dfe54171afee9e327c236";
+    let city ="London";
+    let unit = "metric";
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+    axios.get(url).then(displayWeather);
+
     return form;
   }
 }
