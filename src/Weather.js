@@ -3,7 +3,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTint, faWind, faSmile, faTemperatureHigh, faTemperatureLow } from '@fortawesome/free-solid-svg-icons';
 
-export default function Weather() {
+export default function Weather(props) {
   let [city, setCity] = useState("");
   let [information, setInformation] = useState(false);
   let [weather, setWeather] = useState("");
@@ -13,6 +13,7 @@ export default function Weather() {
     setInformation(true);
     setWeather({
       citydisplay: response.data.name,
+      date: "Saturday 07:00",
       temperature: response.data.main.temp,
       feelslike: response.data.main.feels_like,
       wind: response.data.wind.speed,
@@ -74,9 +75,18 @@ export default function Weather() {
         {form}
         <h4>
         <ul className="main-weather">
-          <li><h1 id="city">{weather.citydisplay}</h1></li>
-          <li>Saturday 07:00</li>
-          <li><h4>{weather.description}</h4></li>
+          <li>
+            <h1 id="city">{weather.citydisplay}
+            </h1>
+          </li>
+          <li>
+            {weather.date}
+          </li>
+          <li>
+            <h4 className="text-capitalize">
+              {weather.description}
+            </h4>
+          </li>
           
         </ul>
         <div className="main-description">
@@ -90,9 +100,10 @@ export default function Weather() {
                     />
                     <div className="float-left">
                       <span className="temperature">
-                      {Math.round(weather.temperature)}
+                        {Math.round(weather.temperature)}
                       </span>
-                      <span className="unit">° c
+                      <span className="unit">
+                        ° c
                       </span>
                     </div>
               </div>
@@ -117,11 +128,10 @@ export default function Weather() {
     );
   } else {
     let apiKey = "dfc2e82cce5dfe54171afee9e327c236";
-    let city ="London";
     let unit = "metric";
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&units=${unit}&appid=${apiKey}`;
     axios.get(url).then(displayWeather);
 
-    return form;
+    return "Loading...";
   }
 }
