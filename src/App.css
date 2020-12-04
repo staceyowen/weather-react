@@ -1,0 +1,13 @@
+body {
+  background-color: #97e0e4;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.App footer {
+  font-size: 12px;
+  margin: 10px 0;
+}

@@ -44,6 +44,7 @@ export default function Weather() {
           type="search" 
           placeholder="Type a city" 
           autocomplete="off"
+          autoFocus="on"
           className="form-control" 
           id="city-input" 
           onChange={updateCity} 
@@ -80,19 +81,23 @@ export default function Weather() {
         </ul>
         <div className="main-description">
           <div className="row">
-            <div className="col-5">
-              <ul>
-                <li>
-                  <img 
-                  src={weather.icon} 
-                  alt="{weather.description}" 
-                  className="float-left" 
-                  />
-                  {Math.round(weather.temperature)}°c
-                </li>
-              </ul>
+            <div className="col-6">
+              <div className="clearfix">
+                    <img 
+                    src={weather.icon} 
+                    alt="{weather.description}" 
+                    className="float-left" 
+                    />
+                    <div className="float-left">
+                      <span className="temperature">
+                      {Math.round(weather.temperature)}
+                      </span>
+                      <span className="unit">°c
+                      </span>
+                    </div>
+              </div>
             </div>
-            <div className="col-4">
+            <div className="col-3">
               <ul>
                 <li><FontAwesomeIcon icon={faSmile} /> Feels like: {Math.round(weather.feelslike)}°c</li>
                 <li><FontAwesomeIcon icon={faTint} /> Humidity: {weather.humidity}%</li>
