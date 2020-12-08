@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import FormattedDate from "./FormattedDate";
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTint, faWind, faSmile, faTemperatureHigh, faTemperatureLow } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +14,7 @@ export default function Weather(props) {
     setInformation(true);
     setWeather({
       citydisplay: response.data.name,
-      date: "Saturday 07:00",
+      date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
       feelslike: response.data.main.feels_like,
       wind: response.data.wind.speed,
@@ -39,25 +40,25 @@ export default function Weather(props) {
 
   let form = (
     <form onSubmit={handleSubmit}>
-      <div class="row">
-        <div class="col-7">
+      <div className="row">
+        <div className="col-7">
           <input 
           type="search" 
           placeholder="Type a city" 
-          autocomplete="off"
+          autoComplete="off"
           autoFocus="on"
           className="form-control" 
           id="city-input" 
           onChange={updateCity} 
           />
         </div>
-        <div class="col-3">
+        <div className="col-3">
           <input 
             className="btn btn-primary w-100" 
             type="submit" 
             value="Search" />
         </div>
-        <div class="col-2">
+        <div className="col-2">
           <input 
             className="btn btn-primary w-100" 
             type="submit" 
@@ -80,7 +81,7 @@ export default function Weather(props) {
             </h1>
           </li>
           <li>
-            {weather.date}
+            <FormattedDate date={weather.date} />
           </li>
           <li>
             <h4 className="text-capitalize">

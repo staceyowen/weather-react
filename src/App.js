@@ -6,9 +6,9 @@ import Weather from "./Weather";
 export default function App() {
   return (
     <div className="App">
-      <div class="container" id="container">
-        <div class="weather-app-wrapper">
-          <div class="weather-app">  
+      <div className="container" id="container">
+        <div className="weather-app-wrapper">
+          <div className="weather-app">  
             <Weather defaultCity="London" />
           </div>  
         </div>
