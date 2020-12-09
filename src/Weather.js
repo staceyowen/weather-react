@@ -11,7 +11,7 @@ export default function Weather(props) {
 
 
   function displayWeather(response) {
-    setInformation(true);
+  
     setWeather({
       citydisplay: response.data.name,
       date: new Date(response.data.dt * 1000),
@@ -24,6 +24,7 @@ export default function Weather(props) {
       temphigh: response.data.main.temp_max,
       templow: response.data.main.temp_min,
     });
+    setInformation(true);
   }
 
   function handleSubmit(event) {
