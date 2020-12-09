@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import FormattedDate from "./FormattedDate";
+
+import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTint, faWind, faSmile, faTemperatureHigh, faTemperatureLow } from '@fortawesome/free-solid-svg-icons';
 
 export default function Weather(props) {
-  let [city, setCity] = useState("");
+  let [city, setCity] = useState(props.defaultCity);
   let [information, setInformation] = useState(false);
   let [weather, setWeather] = useState("");
 
@@ -45,7 +44,7 @@ export default function Weather(props) {
         <div className="col-7">
           <input 
           type="search" 
-          placeholder="Type a city" 
+          placeholder="Search for a city" 
           autoComplete="off"
           autoFocus="on"
           className="form-control" 
@@ -75,57 +74,8 @@ export default function Weather(props) {
     return (
       <div>
         {form}
-        <h4>
-        <ul className="main-weather">
-          <li>
-            <h1 id="city">{weather.citydisplay}
-            </h1>
-          </li>
-          <li>
-            <FormattedDate date={weather.date} />
-          </li>
-          <li>
-            <h4 className="text-capitalize">
-              {weather.description}
-            </h4>
-          </li>
-          
-        </ul>
-        <div className="main-description">
-          <div className="row">
-            <div className="col-6">
-              <div className="clearfix">
-                    <img 
-                    src={weather.icon} 
-                    alt="{weather.description}" 
-                    className="float-left" 
-                    />
-                    <div className="float-left">
-                      <span className="temperature">
-                        {Math.round(weather.temperature)}
-                      </span>
-                      <span className="unit">
-                        ° c
-                      </span>
-                    </div>
-              </div>
-            </div>
-            <div className="col-3">
-              <ul>
-                <li><FontAwesomeIcon icon={faSmile} /> Feels like: {Math.round(weather.feelslike)}°c</li>
-                <li><FontAwesomeIcon icon={faTint} /> Humidity: {weather.humidity}%</li>
-                <li><FontAwesomeIcon icon={faWind} /> Wind: {Math.round(weather.wind)} km/h</li>
-              </ul>
-            </div>
-            <div className="col-3">
-              <ul>
-                <li><FontAwesomeIcon icon={faTemperatureHigh} /> High: {Math.round(weather.temphigh)}°c</li>
-                <li><FontAwesomeIcon icon={faTemperatureLow} /> Low: {Math.round(weather.templow)}°c</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        </h4>
+        <WeatherInfo data={weather}/>
+      
       </div>
     );
   } else {
