@@ -1,5 +1,6 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
+import WeatherIcon from "./WeatherIcon";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTint, faWind, faSmile, faTemperatureHigh, faTemperatureLow } from '@fortawesome/free-solid-svg-icons';
 
@@ -29,11 +30,10 @@ export default function WeatherInfo(props) {
                 <div className="row">
                     <div className="col-6">
                         <div className="clearfix">
-                            <img 
-                            src={props.data.icon} 
-                            alt="{props.data.description}" 
-                            className="float-left" 
-                            />
+                            <div className="float-left">
+                            <WeatherIcon 
+                                code={props.data.icon} />
+                            </div>
                             <div className="float-left">
                                 <span className="temperature">
                                    {Math.round(props.data.temperature)}

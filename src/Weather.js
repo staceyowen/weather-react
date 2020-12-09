@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
+import { icon } from "@fortawesome/fontawesome-svg-core";
 
 export default function Weather(props) {
   let [city, setCity] = useState(props.defaultCity);
@@ -18,7 +19,7 @@ export default function Weather(props) {
       feelslike: response.data.main.feels_like,
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
       description: response.data.weather[0].description,
       temphigh: response.data.main.temp_max,
       templow: response.data.main.temp_min,
@@ -26,12 +27,16 @@ export default function Weather(props) {
     setInformation(true);
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function search() {
     let apiKey = "dfc2e82cce5dfe54171afee9e327c236";
     let unit = "metric";
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${unit}&appid=${apiKey}`;
     axios.get(url).then(displayWeather);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
   }
 
   function updateCity(event) {

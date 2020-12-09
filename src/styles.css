@@ -40,7 +40,7 @@ ul {
   padding-left: 10px;
 }
 
-.main-weather img {
+.main-weather canvas {
   display: block;
   margin: 0 auto;
   height: 48px;
@@ -50,8 +50,8 @@ ul {
 .temperature {
   font-size: 50px;
   font-weight: 300;
-  line-height: 78px;
-  margin-left: 10px;
+  line-height: 65px;
+  margin-left: 20px;
   margin-right: 6px;
 }
 
@@ -72,6 +72,7 @@ ul {
   line-height: 1.5;
 }
 
-img {
+canvas {
+  margin-left: 20px;
   opacity: 0.8;
 }
