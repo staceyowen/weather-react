@@ -12,3 +12,11 @@
   margin: 7px 14px;
   height: 38px;
 }
+
+.WeatherForecastPreview {
+  display: block;
+  margin: 0 auto;
+  background-color: rgb(300 290 200/0.1);
+  border-radius: 64px;
+  text-align: center;
+}
