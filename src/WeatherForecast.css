@@ -6,3 +6,9 @@
   display: block;
   margin: 7px 0;
 }
+
+.WeatherForecastPreview canvas {
+  display: block;
+  margin: 7px 14px;
+  height: 38px;
+}
