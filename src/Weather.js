@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
 import { icon } from "@fortawesome/fontawesome-svg-core";
 
@@ -80,6 +80,7 @@ export default function Weather(props) {
       <div>
         {form}
         <WeatherInfo data={weather}/>
+        <WeatherForecast city={weather.citydisplay}/>
       
       </div>
     );
