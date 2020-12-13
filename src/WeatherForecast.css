@@ -1,5 +1,8 @@
 .WeatherForecast {
   text-align: center;
+
+  margin: 10px;
+  opacity: 0.9;
 }
 
 .WeatherForecast canvas {
@@ -16,7 +19,6 @@
 .WeatherForecastPreview {
   display: block;
   margin: 0 auto;
-  background-color: rgb(300 290 200/0.1);
-  border-radius: 64px;
   text-align: center;
+  padding-top: 17px;
 }

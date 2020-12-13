@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
 import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
-import { icon } from "@fortawesome/fontawesome-svg-core";
 
 export default function Weather(props) {
   let [city, setCity] = useState(props.defaultCity);
@@ -23,6 +22,8 @@ export default function Weather(props) {
       description: response.data.weather[0].description,
       temphigh: response.data.main.temp_max,
       templow: response.data.main.temp_min,
+      sunrise: response.data.sys.sunrise,
+      sunset: response.data.sys.sunset,
     });
     setInformation(true);
   }
