@@ -9,21 +9,26 @@ console.log(props.data)
     function sunrise(){
         let date = new Date(props.data.sunrise * 1000);
         let hours = date.getUTCHours();
+            if (hours < 10) {
+            hours = `0${hours}`;
+            }
+
         let minutes = date.getMinutes();
-        if (hours < 10) {
-        hours = `0${hours}`;
-        minutes = `${minutes}`;
-    }
+            if (minutes < 10) { 
+            minutes = `0${minutes}`;
+            }
        return `${hours}:${minutes}`;
     }
 
     function sunset() {
         let date = new Date(props.data.sunset * 1000);
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        if (hours < 10) {
-        hours = `0${hours}`;
-        minutes = `${minutes}`;
+        let hours = date.getUTCHours();
+            if (hours < 10) {
+            hours = `0${hours}`;
+            } 
+        let minutes = date.getUTCMinutes();
+            if (minutes < 10) { 
+            minutes = `0${minutes}`;
     }
        return `${hours}:${minutes}`;
     }
